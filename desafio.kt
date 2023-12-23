@@ -19,6 +19,15 @@ data class Formacao(val nome: String, val nivel: Nivel, var conteudos: List<Cont
     fun matricular(usuario: Usuario) {
         this.inscritos.add(usuario)
     }
+    
+    //Tempo total de duração do curso
+    fun duracao(): Int{
+        var sum: Int =0
+        for(i in 0..this.conteudos.size-1) {sum += this.conteudos[i].duracao}
+        return sum
+    }
+    
+    //Descreve o nome, duraçao e inscritos no curso
 }
 
 fun main() {
@@ -41,12 +50,29 @@ fun main() {
     	ConteudoEducacional("POO com Kotlin", 20),
     	ConteudoEducacional("Projetos com Kotlin", 20)))
     
+    form1.matricular(usrs[0])
+    form1.matricular(usrs[1])
+    form2.matricular(usrs[2])
+    form2.matricular(usrs[3])
+    form2.matricular(usrs[4])
+    form2.matricular(usrs[5])
+    
+    val forms = mutableListOf(form1, form2)
+    
     //Loop principal do programa
     while(true){
-        break
+        println("Digite o número da ação a ser realizada:")
+        println("0 - Finalizar programa.")
+        println("1 - Descrever formações")
+        var input = 0
+        when(input){
+            0 -> break
+            else -> println("Opção não existente!")
+        }
     }
     
-    print(0)  
+    println("Programa finalizado.")
+    println(forms[1].duracao())
 
     //TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
     //TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
