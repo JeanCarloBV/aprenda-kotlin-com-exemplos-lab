@@ -28,6 +28,14 @@ data class Formacao(val nome: String, val nivel: Nivel, var conteudos: List<Cont
     }
     
     //Descreve o nome, duraçao e inscritos no curso
+    fun descricao(){
+        println("A formação $nome tem nível de complexidade $nivel e duração de ${this.duracao()} horas.")
+        println("Até o momento estão matriculados os alunos: ")
+        for(insc in inscritos){
+            println("\t${insc.nome}\tid: ${insc.id}")
+        }
+    }
+    	
 }
 
 fun main() {
@@ -72,7 +80,7 @@ fun main() {
     }
     
     println("Programa finalizado.")
-    println(forms[1].duracao())
+    forms[1].descricao()
 
     //TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
     //TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
